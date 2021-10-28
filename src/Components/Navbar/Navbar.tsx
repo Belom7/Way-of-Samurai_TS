@@ -5,19 +5,37 @@ const Navbar = () => {
     return (
         <div className={cl.navbar}>
             <div className={cl.item}>
-                <a>Profile</a>
+                <a>Моя станица</a>
             </div>
             <div className={cl.item}>
-                <a>Message</a>
+                <a>Новости</a>
             </div>
             <div className={cl.item}>
-                <a>News</a>
+                <a>Сообщения</a>
             </div>
             <div className={cl.item}>
-                <a>Music</a>
+                <a>Друзья</a>
             </div>
             <div className={cl.item}>
-                <a>Setting</a>
+                <a>Сообщества</a>
+            </div>
+            <div className={cl.item}>
+                <a>Фотографии</a>
+            </div>
+            <div className={cl.item}>
+                <a>Музыка</a>
+            </div>
+            <div className={cl.item}>
+                <a>Видео</a>
+            </div>
+            <div className={cl.item}>
+                <a>Клипы</a>
+            </div>
+            <div className={cl.item}>
+                <a>Игры</a>
+            </div>
+            <div className={cl.item}>
+                <a>Объявления</a>
             </div>
         </div>
     )
