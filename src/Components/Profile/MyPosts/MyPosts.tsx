@@ -7,10 +7,8 @@ const MyPosts = () => {
         <div>
             <div><textarea/></div>
             <div><button>Добавить пост</button></div>
-            <Post/>
-            <Post/>
-            <Post/>
-            <Post/>
+            <Post name='Yulia' message='Hi!'/>
+            <Post name='Anastasiya' message='Hi, bro'/>
         </div>
     )
 }
