@@ -3,7 +3,8 @@ import React from "react";
 const Dialogs = (prop: any) => {
     return (
         <div>
-            Dialogiiii
+            Dialogi
+            yetrotip sorry my friends
         </div>
     )
 }
