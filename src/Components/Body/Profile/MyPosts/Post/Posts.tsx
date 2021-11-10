@@ -1,7 +1,13 @@
 import React from "react";
 import cl from './Post.module.css'
 
-const Post = (prop: any) => {
+type PropsType = {
+    name: string
+    message: string
+    likeCount: number
+}
+
+export const Post: React.FC<PropsType> = (prop) => {
     return (
         <div className={cl.post}>
             <div>
@@ -9,16 +15,11 @@ const Post = (prop: any) => {
                 {prop.name}
             </div>
             <div>
-
-            </div>
-            <div>
                 {prop.message}
             </div>
             <div>
-                <span>like</span>  {prop.likeCount}
+                <span>like</span> {prop.likeCount}
             </div>
         </div>
     )
 }
-
-export default Post

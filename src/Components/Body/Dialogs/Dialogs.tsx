@@ -1,6 +1,6 @@
 import React from "react";
 
-const Dialogs = (prop: any) => {
+export const Dialogs = (prop: any) => {
     return (
         <div>
             Dialogi
@@ -8,5 +8,3 @@ const Dialogs = (prop: any) => {
         </div>
     )
 }
-
-export default Dialogs

@@ -1,26 +1,24 @@
 import React from "react";
 import cl from './Navbar.module.css'
 
-const Navbar = () => {
+export const Navbar = () => {
     return (
         <div className={cl.navbar}>
             <div className={cl.item}>
-                <a>Профиль</a>
+                <a href='/profile'>Профиль</a>
             </div>
             <div className={cl.item}>
-                <a>Сообщения</a>
+                <a href='/message'>Сообщения</a>
             </div>
             <div className={cl.item}>
-                <a>Новости</a>
+                <a href='/news'>Новости</a>
             </div>
             <div className={cl.item}>
-                <a>Музыка</a>
+                <a href='/music'>Музыка</a>
             </div>
             <div className={cl.item}>
-                <a>Настройки</a>
+                <a href='/settings'>Настройки</a>
             </div>
         </div>
     )
 }
-
-export default Navbar
