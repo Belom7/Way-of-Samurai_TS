@@ -7,11 +7,11 @@ import {Route, Routes} from "react-router-dom";
 import {Dialogs} from "./Components/Body/Dialogs/Dialogs";
 
 const arrName = [
-    {name: 'Maks'},
-    {name: 'Yulia'},
-    {name: 'Sasha'},
-    {name: 'Evgen'},
-    {name: 'Ivan'},
+    {id:1, name: 'Maks'},
+    {id:2, name: 'Yulia'},
+    {id:3, name: 'Sasha'},
+    {id:4, name: 'Evgen'},
+    {id:5, name: 'Ivan'},
 ]
 
 const arrMessage = [

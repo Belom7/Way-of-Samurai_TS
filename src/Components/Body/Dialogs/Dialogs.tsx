@@ -1,5 +1,6 @@
 import React from "react";
 import cl from './Dialogs.module.css'
+import {NavLink} from "react-router-dom";
 
 type propsType = {
     name:Array<arrNameType>
@@ -8,6 +9,7 @@ type propsType = {
 
 type arrNameType={
     name:string
+    id:number
 }
 type arrMessageType={
     message:string
@@ -34,7 +36,7 @@ export const Dialogs = (props:propsType) => {
                 {props.name.map((el_arrName) => {
                     return (
                         <li className={cl.dialog}>
-                            <div className={cl.dialogItems}>{el_arrName.name}</div>
+                            <div className={cl.dialogItems}><NavLink to={'/dialogs/' + el_arrName.id}>{el_arrName.name}</NavLink></div>
                         </li>)
                 })}
             </ul>
