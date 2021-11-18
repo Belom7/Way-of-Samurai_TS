@@ -1,21 +1,26 @@
 import React from "react";
 import cl from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
+import {Dialog} from "./Dialog/Dialog";
+import {Message} from "./Messages/Message";
 
-type propsType = {
-    name:Array<arrNameType>
-    message:Array<arrMessageType>
+type typeProps ={
+    arrName: Array<arrNameType>
+    arrMessage: Array<arrMessage>
+
 }
 
-type arrNameType={
-    name:string
+type arrNameType ={
     id:number
+    name:string
 }
-type arrMessageType={
+
+type arrMessage={
     message:string
 }
 
-export const Dialogs = (props:propsType) => {
+
+export const Dialogs = (props:typeProps) => {
     return (
         // <div className={cl.dialogs}>
         //     <div className={cl.dialog}>
@@ -33,18 +38,19 @@ export const Dialogs = (props:propsType) => {
         // </div>
         <div className={cl.dialogs}>
             <ul>
-                {props.name.map((el_arrName) => {
+                {props.arrName.map((el) => {
                     return (
                         <li className={cl.dialog}>
-                            <div className={cl.dialogItems}><NavLink to={'/dialogs/' + el_arrName.id}>{el_arrName.name}</NavLink></div>
-                        </li>)
+                            <Dialog name={el.name} id={el.id}/>
+                        </li>
+                    )
                 })}
             </ul>
             <ul>
-                {props.message.map((el_arrMessage)=>{
-                    return(
+                {props.arrMessage.map((el_arrMessage) => {
+                    return (
                         <li className={cl.message}>
-                            <div className={cl.messageItems}>{el_arrMessage.message}</div>
+                            <Message message={el_arrMessage.message}/>
                         </li>
                     )
                 })}

@@ -5,10 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 
+const arrName = [
+    {id: 1, name: 'Maks'},
+    {id: 2, name: 'Yulia'},
+    {id: 3, name: 'Sasha'},
+    {id: 4, name: 'Evgen'},
+    {id: 5, name: 'Ivan'},
+]
+
+const arrMessage = [
+    {message: 'Hi'},
+    {message: 'Bay'},
+    {message: 'Fack you!'},
+    {message: 'ha-ha'},
+]
+
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App/>
+            <App arrName={arrName} arrMessage={arrMessage}/>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

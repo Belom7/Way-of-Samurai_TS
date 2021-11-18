@@ -2,14 +2,22 @@
     display: flex;
 }
 
-.dialog {
+.dialog{
     padding: 10px;
     margin: 5px;
+}
+
+.dialogItems{
+
 }
 
 .message {
     padding: 10px;
     margin: 5px;
+}
+
+.messageItems{
+
 }
 
 ul {
