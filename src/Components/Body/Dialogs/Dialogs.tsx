@@ -1,22 +1,19 @@
 import React from "react";
 import cl from './Dialogs.module.css'
 
-const arrName = [
-    {name: 'Maks'},
-    {name: 'Yulia'},
-    {name: 'Sasha'},
-    {name: 'Evgen'},
-    {name: 'Ivan'},
-]
+type propsType = {
+    name:Array<arrNameType>
+    message:Array<arrMessageType>
+}
 
-const arrMessage = [
-    {message: 'Hi'},
-    {message: 'Bay'},
-    {message: 'Fack you!'},
-    {message: 'ha-ha'},
-]
+type arrNameType={
+    name:string
+}
+type arrMessageType={
+    message:string
+}
 
-export const Dialogs = (prop: any) => {
+export const Dialogs = (props:propsType) => {
     return (
         // <div className={cl.dialogs}>
         //     <div className={cl.dialog}>
@@ -32,10 +29,9 @@ export const Dialogs = (prop: any) => {
         //         <div className={cl.messageItems}>Bay</div>
         //     </div>
         // </div>
-
         <div className={cl.dialogs}>
             <ul>
-                {arrName.map((el_arrName) => {
+                {props.name.map((el_arrName) => {
                     return (
                         <li className={cl.dialog}>
                             <div className={cl.dialogItems}>{el_arrName.name}</div>
@@ -43,7 +39,7 @@ export const Dialogs = (prop: any) => {
                 })}
             </ul>
             <ul>
-                {arrMessage.map((el_arrMessage)=>{
+                {props.message.map((el_arrMessage)=>{
                     return(
                         <li className={cl.message}>
                             <div className={cl.messageItems}>{el_arrMessage.message}</div>
@@ -51,7 +47,6 @@ export const Dialogs = (prop: any) => {
                     )
                 })}
             </ul>
-
         </div>
     )
 }
