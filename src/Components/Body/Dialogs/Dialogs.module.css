@@ -1,0 +1,28 @@
+.dialogs{
+    display: flex;
+}
+
+.dialog{
+    padding: 10px;
+    margin: 5px;
+}
+
+.dialogItems{
+
+}
+
+.message {
+    padding: 10px;
+    margin: 5px;
+}
+
+.messageItems{
+
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 30%;
+}

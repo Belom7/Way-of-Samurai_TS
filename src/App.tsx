@@ -25,21 +25,21 @@ function App() {
 export default App;
 
 
-{/*render(*/
-}
-{/*    <BrowserRouter>*/
-}
-{/*        <Routes>*/
-}
-{/*            <Route path="/" element={<App/>}>*/
-}
-{/*                <Route path="expenses" element={<Expenses/>}/>*/
-}
-{/*                <Route path="invoices" element={<Invoices/>}/>*/
-}
-{/*            </Route>*/
-}
-{/*        </Routes>*/
-}
-{/*    </BrowserRouter>,*/
-}
+// {/*render(*/
+// }
+// {/*    <BrowserRouter>*/
+// }
+// {/*        <Routes>*/
+// }
+// {/*            <Route path="/" element={<App/>}>*/
+// }
+// {/*                <Route path="expenses" element={<Expenses/>}/>*/
+// }
+// {/*                <Route path="invoices" element={<Invoices/>}/>*/
+// }
+// {/*            </Route>*/
+// }
+// {/*        </Routes>*/
+// }
+// {/*    </BrowserRouter>,*/
+// }

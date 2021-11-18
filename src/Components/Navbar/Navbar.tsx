@@ -10,13 +10,15 @@ const arrNavBar = [
     {path: '/settings', title: 'Настройки'},
 ]
 
+
 export const Navbar = () => {
     return (
         <div className={cl.navbar}>
             {arrNavBar.map((el_navBar) => {
                 return (
                     <div className={cl.item}>
-                        <NavLink to={el_navBar.path}className={({isActive}) => isActive ? cl.active : cl.a}>{el_navBar.title}</NavLink>
+                        <NavLink to={el_navBar.path}
+                                 className={({isActive}) => isActive ? cl.active : cl.a}>{el_navBar.title}</NavLink>
                     </div>
                 )
             })}
