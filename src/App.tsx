@@ -6,39 +6,48 @@ import {Profile} from "./Components/Body/Profile/Profile";
 import {Route, Routes} from "react-router-dom";
 import {Dialogs} from "./Components/Body/Dialogs/Dialogs";
 
-type typeProps ={
-    arrName: Array<arrNameType>
-    arrMessage: Array<arrMessage>
-    arrPosts:Array<arrPosts>
-
+type propsType={
+    state:stateType
 }
 
-type arrNameType ={
+type stateType={
+    profile:profileType
+    dialogs:dialogsType
+}
+
+type profileType={
+    arrPosts:Array<arrPostsType>
+}
+
+type dialogsType={
+    arrName:Array<arrNameType>
+    arrMessage:Array<arrMessageType>
+}
+
+type arrNameType={
     id:number
     name:string
 }
 
-type arrMessage={
+type arrMessageType={
     message:string
 }
 
-type arrPosts={
+type arrPostsType={
     name:string
     message:string
-    likeCount: number
+    likeCount:number
 }
 
-
-
-function App(props:typeProps) {
+function App(props:propsType) {
     return (
         <div className="App">
             <Header/>
             <Navbar/>
             <div className='app_content'>
                 <Routes>
-                    <Route path={'/profile'} element={<Profile title={'ava discription'} arrPosts={props.arrPosts}/>}/>
-                    <Route path={'/message'} element={<Dialogs arrName={props.arrName} arrMessage={props.arrMessage}/>}/>
+                    <Route path={'/profile'} element={<Profile title={'ava discription'} profile={props.state.profile}/>}/>
+                    <Route path={'/message'} element={<Dialogs dialogs={props.state.dialogs}/>}/>
                 </Routes>
             </div>
         </div>

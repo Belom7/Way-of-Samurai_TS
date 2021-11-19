@@ -5,6 +5,11 @@ import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
 type PropsType={
     title:string
+    profile:profileType
+}
+
+type profileType={
+
     arrPosts:Array<arrPosts>
 }
 
@@ -18,7 +23,7 @@ export const Profile:React.FC<PropsType> = (props) => {
     return (
         <div className={cl.profile}>
             <ProfileInfo title={props.title}/>
-            <MyPosts arrPosts={props.arrPosts}/>
+            <MyPosts arrPosts={props.profile.arrPosts}/>
         </div>
     )
 }

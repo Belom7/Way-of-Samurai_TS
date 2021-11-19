@@ -4,32 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-
-const arrName = [
-    {id: 1, name: 'Maks'},
-    {id: 2, name: 'Yulia'},
-    {id: 3, name: 'Sasha'},
-    {id: 4, name: 'Evgen'},
-    {id: 5, name: 'Ivan'},
-]
-
-const arrMessage = [
-    {message: 'Hi'},
-    {message: 'Bay'},
-    {message: 'Fack you!'},
-    {message: 'ha-ha'},
-]
-
-const arrPosts = [
-    {name: 'Yulia', message: 'Hi!', likeCount: 5},
-    {name: 'Anastasiya', message: 'Hi bro!', likeCount: 7},
-    {name: 'Boris', message: 'Chepushila!', likeCount: 10},
-]
+import {state} from "./Redux/state";
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App arrName={arrName} arrMessage={arrMessage} arrPosts={arrPosts}/>
+            <App state={state}/>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

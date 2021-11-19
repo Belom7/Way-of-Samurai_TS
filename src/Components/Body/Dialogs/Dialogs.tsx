@@ -5,9 +5,12 @@ import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Messages/Message";
 
 type typeProps ={
+    dialogs:dialogsType
+}
+
+type dialogsType={
     arrName: Array<arrNameType>
     arrMessage: Array<arrMessage>
-
 }
 
 type arrNameType ={
@@ -38,7 +41,7 @@ export const Dialogs:React.FC<typeProps> = (props) => {
         // </div>
         <div className={cl.dialogs}>
             <ul>
-                {props.arrName.map((el) => {
+                {props.dialogs.arrName.map((el) => {
                     return (
                         <li className={cl.dialog}>
                             <Dialog name={el.name} id={el.id}/>
@@ -47,7 +50,7 @@ export const Dialogs:React.FC<typeProps> = (props) => {
                 })}
             </ul>
             <ul>
-                {props.arrMessage.map((el_arrMessage) => {
+                {props.dialogs.arrMessage.map((el_arrMessage) => {
                     return (
                         <li className={cl.message}>
                             <Message message={el_arrMessage.message}/>
