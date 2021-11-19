@@ -20,7 +20,7 @@ type arrMessage={
 }
 
 
-export const Dialogs = (props:typeProps) => {
+export const Dialogs:React.FC<typeProps> = (props) => {
     return (
         // <div className={cl.dialogs}>
         //     <div className={cl.dialog}>

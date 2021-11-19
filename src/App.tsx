@@ -9,6 +9,7 @@ import {Dialogs} from "./Components/Body/Dialogs/Dialogs";
 type typeProps ={
     arrName: Array<arrNameType>
     arrMessage: Array<arrMessage>
+    arrPosts:Array<arrPosts>
 
 }
 
@@ -21,6 +22,14 @@ type arrMessage={
     message:string
 }
 
+type arrPosts={
+    name:string
+    message:string
+    likeCount: number
+}
+
+
+
 function App(props:typeProps) {
     return (
         <div className="App">
@@ -28,7 +37,7 @@ function App(props:typeProps) {
             <Navbar/>
             <div className='app_content'>
                 <Routes>
-                    <Route path={'/profile'} element={<Profile title={'ava discription'}/>}/>
+                    <Route path={'/profile'} element={<Profile title={'ava discription'} arrPosts={props.arrPosts}/>}/>
                     <Route path={'/message'} element={<Dialogs arrName={props.arrName} arrMessage={props.arrMessage}/>}/>
                 </Routes>
             </div>

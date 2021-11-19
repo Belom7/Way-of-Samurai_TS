@@ -7,7 +7,7 @@ type propsType = {
     id:number
 }
 
-export const Dialog = (props:propsType) => {
+export const Dialog:React.FC<propsType> = (props) => {
     return (
         <div className={cl.dialogItems}>
             <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>

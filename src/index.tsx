@@ -20,10 +20,16 @@ const arrMessage = [
     {message: 'ha-ha'},
 ]
 
+const arrPosts = [
+    {name: 'Yulia', message: 'Hi!', likeCount: 5},
+    {name: 'Anastasiya', message: 'Hi bro!', likeCount: 7},
+    {name: 'Boris', message: 'Chepushila!', likeCount: 10},
+]
+
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App arrName={arrName} arrMessage={arrMessage}/>
+            <App arrName={arrName} arrMessage={arrMessage} arrPosts={arrPosts}/>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
