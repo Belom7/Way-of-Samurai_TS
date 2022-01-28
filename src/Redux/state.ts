@@ -35,6 +35,10 @@ export type friendsType = {
 }
 
 
+export const addPost = (message:string) => {
+    let newPost = {name:'Kto to iz grota', message:message, likeCount: 5}
+    state.profilePage.arrPosts.push(newPost)
+}
 
 export const state = {
     profilePage: {
@@ -74,3 +78,5 @@ export const state = {
         ]
     }
 }
+
+console.log(state.profilePage.arrPosts)

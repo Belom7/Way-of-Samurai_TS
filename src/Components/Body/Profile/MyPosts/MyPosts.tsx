@@ -5,6 +5,7 @@ import {arrPostsType} from "../../../../Redux/state";
 
 type PropsType = {
     arrPosts: arrPostsType[]
+    addPost:(message:string)=>void
 }
 
 export const MyPosts: React.FC<PropsType> = (props) => {
@@ -12,7 +13,7 @@ export const MyPosts: React.FC<PropsType> = (props) => {
     const[value, setValue] = useState('')
 
     const addPostHandler = ()=> {
-        alert(value)
+        props.addPost(value)
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement> ) => {
