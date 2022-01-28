@@ -1,29 +1,36 @@
-import React from "react";
+import React, {ChangeEvent, useState} from "react";
 import cl from './MyPosts.module.css'
 import {Post} from "./Post/Posts";
+import {arrPostsType} from "../../../../Redux/state";
 
-type PropsType={
-    arrPosts:Array<arrPosts>
+type PropsType = {
+    arrPosts: arrPostsType[]
 }
 
-type arrPosts={
-    name:string
-    message:string
-    likeCount: number
-}
+export const MyPosts: React.FC<PropsType> = (props) => {
+
+    const[value, setValue] = useState('')
+
+    const addPostHandler = ()=> {
+        alert(value)
+    }
+
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement> ) => {
+        setValue(e.currentTarget.value)
+    }
 
 
-const MyPosts:React.FC<PropsType> = (props) => {
     return (
         <div className={cl.blockMyPosts}>
-            <div><textarea/></div>
             <div>
-                <button>Добавить пост</button>
+                <input onChange={onChangeHandler}/>
             </div>
-            {props.arrPosts.map((el_posts) => <Post name={el_posts.name} message={el_posts.message}
-                                           likeCount={el_posts.likeCount}/>)}
+            <div>
+                <button onClick={addPostHandler}>Добавить пост</button>
+            </div>
+            {props.arrPosts.map((el_posts) => <Post name={el_posts.name}
+                                                    message={el_posts.message}
+                                                    likeCount={el_posts.likeCount}/>)}
         </div>
     )
 }
-
-export default MyPosts
