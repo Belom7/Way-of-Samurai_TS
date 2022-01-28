@@ -1,20 +1,18 @@
 import React from "react";
 import cl from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
+import {SidebarNav} from "./SidebarNav";
+import {navbarPagesType} from "../../Redux/state";
 
-const arrNavBar = [
-    {path: '/profile', title: 'Профиль'},
-    {path: '/message', title: 'Сообщения'},
-    {path: '/news', title: 'Новости'},
-    {path: '/music', title: 'Музыка'},
-    {path: '/settings', title: 'Настройки'},
-]
+type propsType = {
+    navbar: navbarPagesType
+}
 
 
-export const Navbar = () => {
+export const Navbar:React.FC<propsType> = (props) => {
     return (
         <div className={cl.navbar}>
-            {arrNavBar.map((el_navBar) => {
+            {props.navbar.navbar.map((el_navBar) => {
                 return (
                     <div className={cl.item}>
                         <NavLink to={el_navBar.path}
@@ -22,21 +20,7 @@ export const Navbar = () => {
                     </div>
                 )
             })}
-            {/*<div className={cl.item}>
-                <NavLink to='/profile' className={({isActive})=> isActive ? cl.active : ''}>Профиль</NavLink>
-            </div>
-            <div className={cl.item}>
-                <NavLink to='/message'>Сообщения</NavLink>
-            </div>
-            <div className={cl.item}>
-                <NavLink to='/news'>Новости</NavLink>
-            </div>
-            <div className={cl.item}>
-                <NavLink to='/music'>Музыка</NavLink>
-            </div>
-            <div className={cl.item}>
-                <NavLink to='/settings'>Настройки</NavLink>
-            </div>*/}
+            <SidebarNav friends={props.navbar.friends}/>
         </div>
     )
 }
