@@ -1,23 +1,14 @@
 import React from "react";
 import cl from './Profile.module.css'
-import MyPosts from "./MyPosts/MyPosts";
+import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import {profilePageType} from "../../../Redux/state";
 
 type PropsType={
     title:string
-    profile:profileType
+    profile:profilePageType
 }
 
-type profileType={
-
-    arrPosts:Array<arrPosts>
-}
-
-type arrPosts={
-    name:string
-    message:string
-    likeCount: number
-}
 
 export const Profile:React.FC<PropsType> = (props) => {
     return (
