@@ -1,10 +1,11 @@
 import React from "react";
 import cl from './MyPosts.module.css'
 import {Post} from "./Post/Posts";
-import {arrPostsType} from "../../../../Redux/state";
+import {postsType} from "../../../../Redux/state";
 
 type PropsType = {
-    arrPosts: arrPostsType[]
+    arrPosts: postsType[]
+    addPost:(message:string)=>void
 }
 
 export const MyPosts: React.FC<PropsType> = (props) => {
@@ -12,8 +13,8 @@ export const MyPosts: React.FC<PropsType> = (props) => {
     let newPost = React.createRef<HTMLTextAreaElement>()
 
     const addPostHandler = ()=> {
-        let text = newPost.current?.value
-        alert(text)
+        let text = newPost.current? newPost.current.value : ''
+        props.addPost(text)
     }
 
 

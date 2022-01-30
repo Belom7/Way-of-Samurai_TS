@@ -9,6 +9,7 @@ import {dialogsPageType, navbarPagesType, profilePageType} from "./Redux/state";
 
 type propsType={
     state:stateType
+    addPost:(message:string)=>void
 }
 
 type stateType={
@@ -24,7 +25,7 @@ function App(props:propsType) {
             <Navbar navbar={props.state.navbarPages}/>
             <div className='app_content'>
                 <Routes>
-                    <Route path={'/profile'} element={<Profile title={'ava discription'} profile={props.state.profilePage}/>}/>
+                    <Route path={'/profile'} element={<Profile title={'ava discription'} profile={props.state.profilePage} addPost={props.addPost}/>}/>
                     <Route path={'/message'} element={<Dialogs dialogs={props.state.dialogsPage}/>}/>
                 </Routes>
             </div>
