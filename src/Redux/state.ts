@@ -1,4 +1,10 @@
+import {rerender} from "../render";
 
+export type stateType = {
+    profilePage:profilePageType
+    dialogsPage:dialogsPageType
+    navbarPages:navbarPagesType
+}
 
 export type profilePageType={
     arrPosts:postsType[]
@@ -41,9 +47,10 @@ export type friendsType = {
 export const addPost = (message:string) => {
     let newPost:postsType = {id:5, name:'Kto to iz grota', message:message, likeCount: 5}
     state.profilePage.arrPosts.push(newPost)
+    rerender(state)
 }
 
-export const state = {
+export const state:stateType = {
     profilePage: {
         arrPosts : [
             {id:1, name: 'Yulia', message: 'Hi!', likeCount: 5},
