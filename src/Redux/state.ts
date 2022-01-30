@@ -8,6 +8,7 @@ export type stateType = {
 
 export type profilePageType={
     arrPosts:postsType[]
+    newPostText:string
 }
 export type postsType={
     id:number
@@ -50,13 +51,20 @@ export const addPost = (message:string) => {
     rerender(state)
 }
 
+export const changeNewPostText = (text:string) => {
+    state.profilePage.newPostText = text
+    rerender(state)
+    console.log(state.profilePage.newPostText)
+}
+
 export const state:stateType = {
     profilePage: {
         arrPosts : [
             {id:1, name: 'Yulia', message: 'Hi!', likeCount: 5},
             {id:2, name: 'Anastasiya', message: 'Hi bro!', likeCount: 7},
             {id:3, name: 'Boris', message: 'Chepushila!', likeCount: 10},
-        ]
+        ],
+        newPostText : ''
     },
     dialogsPage: {
         arrName : [
@@ -88,3 +96,11 @@ export const state:stateType = {
         ]
     }
 }
+
+declare global {
+    interface Window {
+        state:any;
+    }
+}
+
+window.state = state
