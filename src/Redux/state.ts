@@ -1,4 +1,6 @@
-import {rerender} from "../render";
+let rerender = () => {
+    console.log('State is changed')
+}
 
 export type stateType = {
     profilePage:profilePageType
@@ -48,13 +50,17 @@ export type friendsType = {
 export const addPost = (message:string) => {
     let newPost:postsType = {id:5, name:'Kto to iz grota', message:message, likeCount: 5}
     state.profilePage.arrPosts.push(newPost)
-    rerender(state)
+    rerender()
 }
 
 export const changeNewPostText = (text:string) => {
     state.profilePage.newPostText = text
-    rerender(state)
+    rerender()
     console.log(state.profilePage.newPostText)
+}
+
+export const subscribe = (observer:()=>void) => {
+    rerender = observer
 }
 
 export const state:stateType = {
