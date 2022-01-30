@@ -1,30 +1,27 @@
-import React, {ChangeEvent, useState} from "react";
+import React from "react";
 import cl from './MyPosts.module.css'
 import {Post} from "./Post/Posts";
 import {arrPostsType} from "../../../../Redux/state";
 
 type PropsType = {
     arrPosts: arrPostsType[]
-    addPost:(message:string)=>void
 }
 
 export const MyPosts: React.FC<PropsType> = (props) => {
 
-    const[value, setValue] = useState('')
+    let newPost = React.createRef<HTMLTextAreaElement>()
 
     const addPostHandler = ()=> {
-        props.addPost(value)
+        let text = newPost.current?.value
+        alert(text)
     }
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement> ) => {
-        setValue(e.currentTarget.value)
-    }
 
 
     return (
         <div className={cl.blockMyPosts}>
             <div>
-                <input onChange={onChangeHandler}/>
+                <textarea ref={newPost}/>
             </div>
             <div>
                 <button onClick={addPostHandler}>Добавить пост</button>
