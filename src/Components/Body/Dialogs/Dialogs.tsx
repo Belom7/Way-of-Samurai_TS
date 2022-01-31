@@ -54,14 +54,15 @@ export const Dialogs: React.FC<typeProps> = (props) => {
                         </li>
                     )
                 })}
-            </ul>
-            <div>
-                <div><textarea value={props.dialogs.newDialogMessage}
-                               onChange={onChangeHandler}/></div>
                 <div>
-                    <button onClick={onClickHandler}>addMessage</button>
+                    <div><textarea value={props.dialogs.newDialogMessage}
+                                   onChange={onChangeHandler}/></div>
+                    <div>
+                        <button onClick={onClickHandler}>addMessage</button>
+                    </div>
                 </div>
-            </div>
+            </ul>
+
         </div>
     )
 }

@@ -118,12 +118,10 @@ export let store:storeType = {
         if(action.type === CHANGE_NEW_POST_TEXT){
             this._state.profilePage.newPostText = action.text
             this.rerender()
-            console.log(this._state.profilePage.newPostText)
         }
         if(action.type === CHANGE_NEW_MASSAGE_TEXT){
             this._state.dialogsPage.newDialogMessage = action.text
             this.rerender()
-            console.log(this._state.dialogsPage.newDialogMessage)
         }
         if(action.type === ADD_MASSAGE) {
             let message = this._state.dialogsPage.newDialogMessage
