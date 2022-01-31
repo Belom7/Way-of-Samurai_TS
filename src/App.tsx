@@ -28,13 +28,13 @@ function App(props:propsType) {
                     <Route path={'/profile'} element={<Profile
                         title={'ava discription'}
                         profile={props.state.profilePage}
-                        // addPost={props.addPost}
-                        // changeNewPostText={props.changeNewPostText}
                         dispatch={props.dispatch}
                     />
                     }
                     />
-                    <Route path={'/message'} element={<Dialogs dialogs={props.state.dialogsPage}/>}/>
+                    <Route path={'/message'} element={<Dialogs
+                        dialogs={props.state.dialogsPage}
+                        dispatch={props.dispatch}/>}/>
                 </Routes>
             </div>
         </div>

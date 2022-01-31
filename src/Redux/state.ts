@@ -24,15 +24,16 @@ export type postsType={
 }
 
 export type dialogsPageType={
-    arrName:arrNameType[]
-    arrMessage:arrMessageType[]
+    arrName:nameType[]
+    arrMessage:messageType[]
+    newDialogMessage:string
 }
-export type arrNameType={
+export type nameType={
     id:number
     name:string
     img: string
 }
-type arrMessageType={
+type messageType={
     message:string
 }
 
@@ -50,14 +51,21 @@ export type friendsType = {
     img: string
 }
 
-export type actionType = addPostType | changeNewPostText
+
+export type actionType = addPostType | changeNewPostType | addMessageType | changeNewMessageText
 export type addPostType = {type:'ADD-POST', text: string}
-export type changeNewPostText = {type:'CHANGE-NEW-POST-TEXT', text:string}
+export type changeNewPostType = {type:'CHANGE-NEW-POST-TEXT', text:string}
+export type addMessageType = {type:'ADD-MASSAGE'}
+export type changeNewMessageText = {type:'CHANGE-NEW-MASSAGE-TEXT', text:string}
 
 
 
-const ADD_POST = 'ADD-POST';
-const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
+
+const ADD_POST = 'ADD-POST'
+const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT'
+const ADD_MASSAGE = 'ADD-MASSAGE'
+const CHANGE_NEW_MASSAGE_TEXT = 'CHANGE-NEW-MASSAGE-TEXT'
+
 
 export let store:storeType = {
     _state: {
@@ -83,6 +91,7 @@ export let store:storeType = {
                 {message: 'Fack you!'},
                 {message: 'ha-ha'},
             ],
+            newDialogMessage: ''
         },
         navbarPages: {
             navbar : [
@@ -111,6 +120,18 @@ export let store:storeType = {
             this.rerender()
             console.log(this._state.profilePage.newPostText)
         }
+        if(action.type === CHANGE_NEW_MASSAGE_TEXT){
+            this._state.dialogsPage.newDialogMessage = action.text
+            this.rerender()
+            console.log(this._state.dialogsPage.newDialogMessage)
+        }
+        if(action.type === ADD_MASSAGE) {
+            let message = this._state.dialogsPage.newDialogMessage
+            let newMessage = {message:message}
+            this._state.dialogsPage.arrMessage.push(newMessage)
+            this.rerender()
+        }
+
     },
     subscribe (observer:()=>void)  {
         this.rerender = observer

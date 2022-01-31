@@ -7,8 +7,6 @@ import {actionType, profilePageType} from "../../../Redux/state";
 type PropsType={
     title:string
     profile:profilePageType
-    // addPost:(message:string)=>void
-    // changeNewPostText:(text:string)=>void
     dispatch:(action:actionType)=>void
 }
 
@@ -18,8 +16,6 @@ export const Profile:React.FC<PropsType> = (props) => {
         <div className={cl.profile}>
             <ProfileInfo title={props.title} />
             <MyPosts profile={props.profile}
-                     // addPost={props.addPost}
-                     // changeNewPostText={props.changeNewPostText}
                      dispatch={props.dispatch}
             />
         </div>

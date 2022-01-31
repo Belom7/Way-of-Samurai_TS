@@ -2,14 +2,40 @@ import React from "react";
 import cl from './Dialogs.module.css'
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Messages/Message";
-import {dialogsPageType} from "../../../Redux/state";
+import {actionType, addMessageType, changeNewMessageText, dialogsPageType} from "../../../Redux/state";
 
-type typeProps ={
-    dialogs:dialogsPageType
+type typeProps = {
+    dialogs: dialogsPageType
+    dispatch: (action: actionType) => void
 }
 
+const changeNewMassageAC = (text: string): changeNewMessageText => {
+    return {
+        type: 'CHANGE-NEW-MASSAGE-TEXT',
+        text: text
+    }
+}
 
-export const Dialogs:React.FC<typeProps> = (props) => {
+const addMessageAC = (): addMessageType => {
+    return {
+        type: 'ADD-MASSAGE',
+    }
+}
+
+export const Dialogs: React.FC<typeProps> = (props) => {
+
+    let newMessageRef = React.createRef<HTMLTextAreaElement>()
+
+    const onClickHandler = () => {
+        props.dispatch(addMessageAC())
+        props.dispatch(changeNewMassageAC(''))
+    }
+
+    const onChangeHandler = () => {
+        let newMessage = newMessageRef.current ? newMessageRef.current.value : ''
+        props.dispatch(changeNewMassageAC(newMessage))
+    }
+
     return (
         <div className={cl.dialogs}>
             <ul>
@@ -30,6 +56,14 @@ export const Dialogs:React.FC<typeProps> = (props) => {
                     )
                 })}
             </ul>
+            <div>
+                <div><textarea ref={newMessageRef} value={props.dialogs.newDialogMessage}
+                               onChange={onChangeHandler}/></div>
+                <div>
+                    <button onClick={onClickHandler}>addMessage</button>
+                </div>
+            </div>
         </div>
     )
 }
+

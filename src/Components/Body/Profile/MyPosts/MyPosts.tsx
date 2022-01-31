@@ -1,7 +1,7 @@
 import React from "react";
 import cl from './MyPosts.module.css'
 import {Post} from "./Post/Posts";
-import {actionType, addPostType, changeNewPostText, profilePageType} from "../../../../Redux/state";
+import {actionType, addPostType, changeNewPostType, profilePageType} from "../../../../Redux/state";
 
 type PropsType = {
     profile:profilePageType
@@ -16,14 +16,12 @@ const addPostAC = (text:string):addPostType => {
     }
 }
 
-const changeNewPostTextAC = (text:string):changeNewPostText => {
+const changeNewPostTextAC = (text:string):changeNewPostType => {
     return{
         type:'CHANGE-NEW-POST-TEXT',
         text:text
     }
 }
-
-
 
 
 export const MyPosts: React.FC<PropsType> = (props) => {
