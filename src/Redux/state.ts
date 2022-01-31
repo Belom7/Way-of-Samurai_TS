@@ -51,12 +51,13 @@ export type friendsType = {
 }
 
 export type actionType = addPostType | changeNewPostText
-type addPostType = {type:'ADD-POST', text: string}
-type changeNewPostText = {type:'CHANGE-NEW-POST-TEXT', text:string}
+export type addPostType = {type:'ADD-POST', text: string}
+export type changeNewPostText = {type:'CHANGE-NEW-POST-TEXT', text:string}
 
 
 
-
+const ADD_POST = 'ADD-POST';
+const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
 
 export let store:storeType = {
     _state: {
@@ -100,12 +101,12 @@ export let store:storeType = {
     },
     getState() {return this._state},
     dispatch(action) {
-        if(action.type === 'ADD-POST'){
+        if(action.type === ADD_POST){
             let newPost:postsType = {id:5, name:'Kto to iz grota', message:action.text, likeCount: 5}
             this._state.profilePage.arrPosts.push(newPost)
             this.rerender()
         }
-        if(action.type === 'CHANGE-NEW-POST-TEXT'){
+        if(action.type === CHANGE_NEW_POST_TEXT){
             this._state.profilePage.newPostText = action.text
             this.rerender()
             console.log(this._state.profilePage.newPostText)

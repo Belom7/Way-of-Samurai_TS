@@ -1,12 +1,30 @@
 import React from "react";
 import cl from './MyPosts.module.css'
 import {Post} from "./Post/Posts";
-import {actionType, profilePageType} from "../../../../Redux/state";
+import {actionType, addPostType, changeNewPostText, profilePageType} from "../../../../Redux/state";
 
 type PropsType = {
     profile:profilePageType
     dispatch:(action:actionType)=>void
 }
+
+
+const addPostAC = (text:string):addPostType => {
+    return {
+        type:'ADD-POST',
+        text:text,
+    }
+}
+
+const changeNewPostTextAC = (text:string):changeNewPostText => {
+    return{
+        type:'CHANGE-NEW-POST-TEXT',
+        text:text
+    }
+}
+
+
+
 
 export const MyPosts: React.FC<PropsType> = (props) => {
 
@@ -14,16 +32,13 @@ export const MyPosts: React.FC<PropsType> = (props) => {
 
     const addPostHandler = ()=> {
         let text = newPost.current? newPost.current.value : ''
-        let action:actionType = {type:'ADD-POST', text:text};
-        props.dispatch(action)
-        let action2:actionType = {type:'CHANGE-NEW-POST-TEXT', text:''};
-        props.dispatch(action2)
+        props.dispatch(addPostAC(text))
+        props.dispatch(changeNewPostTextAC(''))
     }
 
     const onChangeHandler = () => {
         let text = newPost.current? newPost.current.value : ''
-        let action:actionType = {type: 'CHANGE-NEW-POST-TEXT', text: text};
-        props.dispatch(action)
+        props.dispatch(changeNewPostTextAC(text))
     }
 
     return (
