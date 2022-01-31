@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import cl from './Dialogs.module.css'
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Messages/Message";
@@ -24,15 +24,14 @@ const addMessageAC = (): addMessageType => {
 
 export const Dialogs: React.FC<typeProps> = (props) => {
 
-    let newMessageRef = React.createRef<HTMLTextAreaElement>()
 
     const onClickHandler = () => {
         props.dispatch(addMessageAC())
         props.dispatch(changeNewMassageAC(''))
     }
 
-    const onChangeHandler = () => {
-        let newMessage = newMessageRef.current ? newMessageRef.current.value : ''
+    const onChangeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
+        let newMessage = e.currentTarget.value
         props.dispatch(changeNewMassageAC(newMessage))
     }
 
@@ -57,7 +56,7 @@ export const Dialogs: React.FC<typeProps> = (props) => {
                 })}
             </ul>
             <div>
-                <div><textarea ref={newMessageRef} value={props.dialogs.newDialogMessage}
+                <div><textarea value={props.dialogs.newDialogMessage}
                                onChange={onChangeHandler}/></div>
                 <div>
                     <button onClick={onClickHandler}>addMessage</button>
