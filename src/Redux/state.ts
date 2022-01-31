@@ -1,8 +1,7 @@
 export type storeType = {
     _state:stateType
     getState:()=>stateType
-    addPost:(message:string)=>void
-    changeNewPostText:(text:string)=>void
+    dispatch:(action:actionType)=>void
     subscribe:(observer:()=>void)=>void
     rerender:()=>void
 }
@@ -51,6 +50,13 @@ export type friendsType = {
     img: string
 }
 
+export type actionType = addPostType | changeNewPostText
+type addPostType = {type:'ADD-POST', text: string}
+type changeNewPostText = {type:'CHANGE-NEW-POST-TEXT', text:string}
+
+
+
+
 
 export let store:storeType = {
     _state: {
@@ -93,28 +99,30 @@ export let store:storeType = {
         }
     },
     getState() {return this._state},
-    addPost (message:string) {
-        let newPost:postsType = {id:5, name:'Kto to iz grota', message:message, likeCount: 5}
-        this._state.profilePage.arrPosts.push(newPost)
-        this.rerender()
-    },
-    changeNewPostText (text:string)  {
-        this._state.profilePage.newPostText = text
-        this.rerender()
-        console.log(this._state.profilePage.newPostText)
+    dispatch(action) {
+        if(action.type === 'ADD-POST'){
+            let newPost:postsType = {id:5, name:'Kto to iz grota', message:action.text, likeCount: 5}
+            this._state.profilePage.arrPosts.push(newPost)
+            this.rerender()
+        }
+        if(action.type === 'CHANGE-NEW-POST-TEXT'){
+            this._state.profilePage.newPostText = action.text
+            this.rerender()
+            console.log(this._state.profilePage.newPostText)
+        }
     },
     subscribe (observer:()=>void)  {
         this.rerender = observer
     },
     rerender ()  {
         console.log('State is changed')
+    },
+}
+
+declare global {
+    interface Window {
+        store:any;
     }
 }
 
-// declare global {
-//     interface Window {
-//         store:any;
-//     }
-// }
-//
-// window.store = store
+window.store = store

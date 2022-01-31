@@ -5,12 +5,11 @@ import {Navbar} from "./Components/Navbar/Navbar";
 import {Profile} from "./Components/Body/Profile/Profile";
 import {Route, Routes} from "react-router-dom";
 import {Dialogs} from "./Components/Body/Dialogs/Dialogs";
-import {dialogsPageType, navbarPagesType, profilePageType} from "./Redux/state";
+import {actionType, dialogsPageType, navbarPagesType, profilePageType} from "./Redux/state";
 
 type propsType={
     state:stateType
-    addPost:(message:string)=>void
-    changeNewPostText:(text:string)=>void
+    dispatch:(action:actionType)=>void
 }
 
 type stateType={
@@ -29,8 +28,9 @@ function App(props:propsType) {
                     <Route path={'/profile'} element={<Profile
                         title={'ava discription'}
                         profile={props.state.profilePage}
-                        addPost={props.addPost}
-                        changeNewPostText={props.changeNewPostText}
+                        // addPost={props.addPost}
+                        // changeNewPostText={props.changeNewPostText}
+                        dispatch={props.dispatch}
                     />
                     }
                     />
