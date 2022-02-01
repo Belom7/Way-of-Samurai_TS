@@ -1,26 +1,12 @@
 import React from "react";
 import cl from './MyPosts.module.css'
 import {Post} from "./Post/Posts";
-import {actionType, addPostType, changeNewPostType, profilePageType} from "../../../../Redux/state";
+import {actionType, profilePageType} from "../../../../Redux/state";
+import {addPostAC, changeNewPostTextAC} from "../../../../Redux/profileReducer";
 
 type PropsType = {
     profile:profilePageType
     dispatch:(action:actionType)=>void
-}
-
-
-const addPostAC = (text:string):addPostType => {
-    return {
-        type:'ADD-POST',
-        text:text,
-    }
-}
-
-const changeNewPostTextAC = (text:string):changeNewPostType => {
-    return{
-        type:'CHANGE-NEW-POST-TEXT',
-        text:text
-    }
 }
 
 

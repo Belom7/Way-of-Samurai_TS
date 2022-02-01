@@ -1,3 +1,6 @@
+import {addMessageAC, changeNewMassageAC, dialogReducer} from "./dialogReducer";
+import {addPostAC, changeNewPostTextAC, profileReducer} from "./profileReducer";
+
 export type storeType = {
     _state:stateType
     getState:()=>stateType
@@ -52,19 +55,14 @@ export type friendsType = {
 }
 
 
+
+
 export type actionType = addPostType | changeNewPostType | addMessageType | changeNewMessageText
-export type addPostType = {type:'ADD-POST', text: string}
-export type changeNewPostType = {type:'CHANGE-NEW-POST-TEXT', text:string}
-export type addMessageType = {type:'ADD-MASSAGE'}
-export type changeNewMessageText = {type:'CHANGE-NEW-MASSAGE-TEXT', text:string}
+export type addPostType = ReturnType<typeof addPostAC>
+export type changeNewPostType = ReturnType<typeof changeNewPostTextAC>
+export type addMessageType = ReturnType<typeof addMessageAC>
+export type changeNewMessageText = ReturnType<typeof changeNewMassageAC>
 
-
-
-
-const ADD_POST = 'ADD-POST'
-const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT'
-const ADD_MASSAGE = 'ADD-MASSAGE'
-const CHANGE_NEW_MASSAGE_TEXT = 'CHANGE-NEW-MASSAGE-TEXT'
 
 
 export let store:storeType = {
@@ -110,26 +108,9 @@ export let store:storeType = {
     },
     getState() {return this._state},
     dispatch(action) {
-        if(action.type === ADD_POST){
-            let newPost:postsType = {id:5, name:'Kto to iz grota', message:action.text, likeCount: 5}
-            this._state.profilePage.arrPosts.push(newPost)
-            this.rerender()
-        }
-        if(action.type === CHANGE_NEW_POST_TEXT){
-            this._state.profilePage.newPostText = action.text
-            this.rerender()
-        }
-        if(action.type === CHANGE_NEW_MASSAGE_TEXT){
-            this._state.dialogsPage.newDialogMessage = action.text
-            this.rerender()
-        }
-        if(action.type === ADD_MASSAGE) {
-            let message = this._state.dialogsPage.newDialogMessage
-            let newMessage = {message:message}
-            this._state.dialogsPage.arrMessage.push(newMessage)
-            this.rerender()
-        }
-
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
+        this.rerender()
     },
     subscribe (observer:()=>void)  {
         this.rerender = observer

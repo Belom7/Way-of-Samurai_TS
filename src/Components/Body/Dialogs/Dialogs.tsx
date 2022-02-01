@@ -2,25 +2,15 @@ import React, {ChangeEvent} from "react";
 import cl from './Dialogs.module.css'
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Messages/Message";
-import {actionType, addMessageType, changeNewMessageText, dialogsPageType} from "../../../Redux/state";
+import {actionType, dialogsPageType} from "../../../Redux/state";
+import {addMessageAC, changeNewMassageAC} from "../../../Redux/dialogReducer";
 
 type typeProps = {
     dialogs: dialogsPageType
     dispatch: (action: actionType) => void
 }
 
-const changeNewMassageAC = (text: string): changeNewMessageText => {
-    return {
-        type: 'CHANGE-NEW-MASSAGE-TEXT',
-        text: text
-    }
-}
 
-const addMessageAC = (): addMessageType => {
-    return {
-        type: 'ADD-MASSAGE',
-    }
-}
 
 export const Dialogs: React.FC<typeProps> = (props) => {
 
