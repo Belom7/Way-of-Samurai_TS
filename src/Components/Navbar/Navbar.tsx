@@ -2,7 +2,8 @@ import React from "react";
 import cl from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
 import {SidebarNav} from "./SidebarNav";
-import {navbarPagesType} from "../../Redux/state";
+import {navbarPagesType} from "../../Redux/navbarReducer";
+
 
 type propsType = {
     navbar: navbarPagesType

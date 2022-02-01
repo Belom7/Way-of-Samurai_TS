@@ -5,24 +5,22 @@ import {Navbar} from "./Components/Navbar/Navbar";
 import {Profile} from "./Components/Body/Profile/Profile";
 import {Route, Routes} from "react-router-dom";
 import {Dialogs} from "./Components/Body/Dialogs/Dialogs";
-import {actionType, dialogsPageType, navbarPagesType, profilePageType} from "./Redux/state";
+import {appStateType} from "./Redux/store";
+import {DialogsActionType} from "./Redux/dialogReducer";
+import {ProfileActionsType} from "./Redux/profileReducer";
 
 type propsType={
-    state:stateType
-    dispatch:(action:actionType)=>void
+    state:appStateType
+    dispatch:(action:ActionsType)=>void
 }
 
-type stateType={
-    profilePage:profilePageType
-    dialogsPage:dialogsPageType
-    navbarPages: navbarPagesType
-}
+export type ActionsType = DialogsActionType | ProfileActionsType
 
 function App(props:propsType) {
     return (
         <div className="App">
             <Header/>
-            <Navbar navbar={props.state.navbarPages}/>
+            <Navbar navbar={props.state.navbarPage}/>
             <div className='app_content'>
                 <Routes>
                     <Route path={'/profile'} element={<Profile
@@ -33,7 +31,7 @@ function App(props:propsType) {
                     }
                     />
                     <Route path={'/message'} element={<Dialogs
-                        dialogs={props.state.dialogsPage}
+                        dialogs={props.state.dialogPage}
                         dispatch={props.dispatch}/>}/>
                 </Routes>
             </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import cl from './Dialog.module.css'
 import {NavLink} from "react-router-dom";
-import {nameType} from "../../../../Redux/state";
+import {nameType} from "../../../../Redux/dialogReducer";
+
 
 
 export const Dialog:React.FC<nameType> = (props) => {

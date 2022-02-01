@@ -1,6 +1,6 @@
 import React from 'react';
-import {friendsType} from "../../Redux/state";
 import cl from './SidebarNav.module.css'
+import {friendsType} from "../../Redux/navbarReducer";
 
 type propsType = {
     friends: friendsType[]

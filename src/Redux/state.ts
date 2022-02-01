@@ -1,37 +1,37 @@
-import {addMessageAC, changeNewMassageAC, dialogReducer} from "./dialogReducer";
-import {addPostAC, changeNewPostTextAC, profileReducer} from "./profileReducer";
+import {addMessageAC, changeNewMassageAC,} from "./dialogReducer";
+import {addPostAC, changeNewPostTextAC,} from "./profileReducer";
 
-export type storeType = {
+type storeType = {
     _state:stateType
     getState:()=>stateType
-    dispatch:(action:actionType)=>void
+    dispatch:(action:any)=>void
     subscribe:(observer:()=>void)=>void
     rerender:()=>void
 }
 
-export type stateType = {
+type stateType = {
     profilePage:profilePageType
     dialogsPage:dialogsPageType
     navbarPages:navbarPagesType
 }
 
-export type profilePageType={
+type profilePageType={
     arrPosts:postsType[]
     newPostText:string
 }
-export type postsType={
+type postsType={
     id:number
     name:string
     message:string
     likeCount:number
 }
 
-export type dialogsPageType={
+type dialogsPageType={
     arrName:nameType[]
     arrMessage:messageType[]
     newDialogMessage:string
 }
-export type nameType={
+type nameType={
     id:number
     name:string
     img: string
@@ -40,7 +40,7 @@ type messageType={
     message:string
 }
 
-export type navbarPagesType={
+type navbarPagesType={
     navbar: navbarType[]
     friends: friendsType[]
 }
@@ -48,7 +48,7 @@ type navbarType = {
     path: string,
     title: string
 }
-export type friendsType = {
+type friendsType = {
     id: number,
     name: string,
     img: string
@@ -57,15 +57,15 @@ export type friendsType = {
 
 
 
-export type actionType = addPostType | changeNewPostType | addMessageType | changeNewMessageText
-export type addPostType = ReturnType<typeof addPostAC>
-export type changeNewPostType = ReturnType<typeof changeNewPostTextAC>
-export type addMessageType = ReturnType<typeof addMessageAC>
-export type changeNewMessageText = ReturnType<typeof changeNewMassageAC>
+type actionType = addPostType | changeNewPostType | addMessageType | changeNewMessageText
+type addPostType = ReturnType<typeof addPostAC>
+type changeNewPostType = ReturnType<typeof changeNewPostTextAC>
+type addMessageType = ReturnType<typeof addMessageAC>
+type changeNewMessageText = ReturnType<typeof changeNewMassageAC>
 
 
 
-export let store:storeType = {
+let store:storeType = {
     _state: {
         profilePage: {
             arrPosts : [
@@ -107,9 +107,9 @@ export let store:storeType = {
         }
     },
     getState() {return this._state},
-    dispatch(action) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
+    dispatch(action:actionType) {
+        // this._state.profilePage = profileReducer(this._state.profilePage, action)
+        // this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
         this.rerender()
     },
     subscribe (observer:()=>void)  {

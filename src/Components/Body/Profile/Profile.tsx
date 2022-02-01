@@ -2,12 +2,14 @@ import React from "react";
 import cl from './Profile.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {actionType, profilePageType} from "../../../Redux/state";
+
+import {ActionsType} from "../../../App";
+import {profilePageType} from "../../../Redux/profileReducer";
 
 type PropsType={
     title:string
     profile:profilePageType
-    dispatch:(action:actionType)=>void
+    dispatch:(action:ActionsType)=>void
 }
 
 
