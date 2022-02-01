@@ -112,6 +112,7 @@ let store:storeType = {
         // this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
         this.rerender()
     },
+
     subscribe (observer:()=>void)  {
         this.rerender = observer
     },

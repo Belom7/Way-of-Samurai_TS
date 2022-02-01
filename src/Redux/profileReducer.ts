@@ -49,6 +49,6 @@ export const addPostAC = (text:string) => {
 export const changeNewPostTextAC = (text:string) => {
     return{
         type:'CHANGE-NEW-POST-TEXT',
-        text:text
+        text
     } as const
 }

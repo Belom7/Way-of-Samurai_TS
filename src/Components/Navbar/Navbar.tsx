@@ -2,18 +2,18 @@ import React from "react";
 import cl from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
 import {SidebarNav} from "./SidebarNav";
-import {navbarPagesType} from "../../Redux/navbarReducer";
+import {appStoreType} from "../../Redux/store";
 
 
 type propsType = {
-    navbar: navbarPagesType
+    store:appStoreType
 }
 
 
 export const Navbar:React.FC<propsType> = (props) => {
     return (
         <div className={cl.navbar}>
-            {props.navbar.navbar.map((el_navBar) => {
+            {props.store.getState().navbarPage.navbar.map((el_navBar) => {
                 return (
                     <div className={cl.item}>
                         <NavLink to={el_navBar.path}
@@ -21,7 +21,7 @@ export const Navbar:React.FC<propsType> = (props) => {
                     </div>
                 )
             })}
-            <SidebarNav friends={props.navbar.friends}/>
+            <SidebarNav friends={props.store.getState().navbarPage.friends}/>
         </div>
     )
 }

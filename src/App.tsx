@@ -4,35 +4,29 @@ import {Header} from "./Components/Header/Header";
 import {Navbar} from "./Components/Navbar/Navbar";
 import {Profile} from "./Components/Body/Profile/Profile";
 import {Route, Routes} from "react-router-dom";
-import {Dialogs} from "./Components/Body/Dialogs/Dialogs";
-import {appStateType} from "./Redux/store";
-import {DialogsActionType} from "./Redux/dialogReducer";
-import {ProfileActionsType} from "./Redux/profileReducer";
+import {appStoreType} from "./Redux/store";
+import {DialogsContainer} from "./Components/Body/Dialogs/DialogsContainer";
+
 
 type propsType={
-    state:appStateType
-    dispatch:(action:ActionsType)=>void
+    store:appStoreType
 }
-
-export type ActionsType = DialogsActionType | ProfileActionsType
 
 function App(props:propsType) {
     return (
         <div className="App">
             <Header/>
-            <Navbar navbar={props.state.navbarPage}/>
+            <Navbar store={props.store}/>
             <div className='app_content'>
                 <Routes>
                     <Route path={'/profile'} element={<Profile
                         title={'ava discription'}
-                        profile={props.state.profilePage}
-                        dispatch={props.dispatch}
+                        store={props.store}
                     />
                     }
                     />
-                    <Route path={'/message'} element={<Dialogs
-                        dialogs={props.state.dialogPage}
-                        dispatch={props.dispatch}/>}/>
+                    <Route path={'/message'} element={<DialogsContainer
+                        store={props.store}/>}/>
                 </Routes>
             </div>
         </div>

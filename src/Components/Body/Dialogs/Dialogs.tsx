@@ -2,33 +2,30 @@ import React, {ChangeEvent} from "react";
 import cl from './Dialogs.module.css'
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Messages/Message";
-import {addMessageAC, changeNewMassageAC, dialogsPageType} from "../../../Redux/dialogReducer";
-import {ActionsType} from "../../../App";
+import {dialogsPageType} from "../../../Redux/dialogReducer";
 
 type typeProps = {
-    dialogs: dialogsPageType
-    dispatch: (action: ActionsType) => void
+    state:dialogsPageType
+    onClickHandler:()=>void
+    onChangeHandler:(newMessage:string)=>void
 }
-
-
 
 export const Dialogs: React.FC<typeProps> = (props) => {
 
 
     const onClickHandler = () => {
-        props.dispatch(addMessageAC())
-        props.dispatch(changeNewMassageAC(''))
+        props.onClickHandler()
     }
 
     const onChangeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
         let newMessage = e.currentTarget.value
-        props.dispatch(changeNewMassageAC(newMessage))
+        props.onChangeHandler(newMessage)
     }
 
     return (
         <div className={cl.dialogs}>
             <ul>
-                {props.dialogs.arrName.map((el) => {
+                {props.state.arrName.map((el) => {
                     return (
                         <li className={cl.dialog}>
                             <Dialog name={el.name} id={el.id} img={el.img}/>
@@ -37,7 +34,7 @@ export const Dialogs: React.FC<typeProps> = (props) => {
                 })}
             </ul>
             <ul>
-                {props.dialogs.arrMessage.map((el_arrMessage) => {
+                {props.state.arrMessage.map((el_arrMessage) => {
                     return (
                         <li className={cl.message}>
                             <Message message={el_arrMessage.message}/>
@@ -45,7 +42,7 @@ export const Dialogs: React.FC<typeProps> = (props) => {
                     )
                 })}
                 <div>
-                    <div><textarea value={props.dialogs.newDialogMessage}
+                    <div><textarea value={props.state.newDialogMessage}
                                    onChange={onChangeHandler}/></div>
                     <div>
                         <button onClick={onClickHandler}>addMessage</button>
