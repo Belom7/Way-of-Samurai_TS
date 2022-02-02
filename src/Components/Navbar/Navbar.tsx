@@ -6,14 +6,14 @@ import {navbarPagesType} from "../../Redux/navbarReducer";
 
 
 type propsType = {
-    state:navbarPagesType
+    navbarPage:navbarPagesType
 }
 
 
 export const Navbar:React.FC<propsType> = (props) => {
     return (
         <div className={cl.navbar}>
-            {props.state.navbar.map((el_navBar) => {
+            {props.navbarPage.navbar.map((el_navBar) => {
                 return (
                     <div className={cl.item}>
                         <NavLink to={el_navBar.path}
@@ -21,7 +21,7 @@ export const Navbar:React.FC<propsType> = (props) => {
                     </div>
                 )
             })}
-            <SidebarNav friends={props.state.friends}/>
+            <SidebarNav friends={props.navbarPage.friends}/>
         </div>
     )
 }

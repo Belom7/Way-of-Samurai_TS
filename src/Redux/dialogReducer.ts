@@ -54,13 +54,13 @@ export const dialogReducer = (state: dialogsPageType = initialState, action: Dia
 
 export const changeNewMassageAC = (text: string) => {
     return {
-        type: 'CHANGE-NEW-MASSAGE-TEXT',
+        type: CHANGE_NEW_MASSAGE_TEXT,
         text: text
     } as const
 }
 
 export const addMessageAC = () => {
     return {
-        type: 'ADD-MASSAGE',
+        type: ADD_MASSAGE,
     } as const
 }

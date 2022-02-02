@@ -41,14 +41,14 @@ export const profileReducer = (state:profilePageType = initialState, action:Prof
 
 export const addPostAC = (text:string) => {
     return {
-        type:'ADD-POST',
+        type:ADD_POST,
         text:text,
     } as const
 }
 
 export const changeNewPostTextAC = (text:string) => {
     return{
-        type:'CHANGE-NEW-POST-TEXT',
+        type:CHANGE_NEW_POST_TEXT,
         text
     } as const
 }
