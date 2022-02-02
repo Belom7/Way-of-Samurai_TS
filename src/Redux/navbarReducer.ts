@@ -5,7 +5,8 @@ export type navbarPagesType={
     friends: friendsType[]
 }
 type navbarType = {
-    path: string,
+    id:number
+    path: string
     title: string
 }
 export type friendsType = {
@@ -17,11 +18,11 @@ export type friendsType = {
 
 let initialState = {
     navbar : [
-        {path: '/profile', title: 'Профиль'},
-        {path: '/message', title: 'Сообщения'},
-        {path: '/news', title: 'Новости'},
-        {path: '/music', title: 'Музыка'},
-        {path: '/settings', title: 'Настройки'},
+        {id:1, path: '/profile', title: 'Профиль'},
+        {id:2, path: '/message', title: 'Сообщения'},
+        {id:3, path: '/news', title: 'Новости'},
+        {id:4, path: '/music', title: 'Музыка'},
+        {id:5, path: '/settings', title: 'Настройки'},
     ],
     friends: [
         {id:1, name: 'Sasha', img: 'https://cspromogame.ru//storage/upload_images/avatars/1299.jpg'},

@@ -21,10 +21,11 @@ export const MyPosts: React.FC<PropsType> = (props) => {
     }
 
     const onChangeHandler = () => {
-        //let text = newPost.current ? newPost.current.value : ''
-        if (newPost.current) {
-            props.onChange(newPost.current.value)
-        }
+        let text = newPost.current ? newPost.current.value : ''
+        props.onChange(text)
+        // if (newPost.current) {
+        //     props.onChange(newPost.current.value)
+        // }
 
     }
 
@@ -36,7 +37,7 @@ export const MyPosts: React.FC<PropsType> = (props) => {
             <div>
                 <button onClick={addPostHandler}>Добавить пост</button>
             </div>
-            {props.profilePage.arrPosts.map((el_posts) => <Post name={el_posts.name}
+            {props.profilePage.arrPosts.map((el_posts) => <Post key={el_posts.id} name={el_posts.name}
                                                     message={el_posts.message}
                                                     likeCount={el_posts.likeCount}/>)}
         </div>

@@ -10,6 +10,7 @@ export type nameType={
 }
 type messageType={
     message:string
+    id:number
 }
 
 export type DialogsActionType = AddMessageACType | ChangeNewMassageACType
@@ -28,10 +29,10 @@ let initialState = {
         {id: 5, name: 'Ivan', img: 'https://sun9-1.userapi.com/sun9-74/s/v1/if1/FKF7voRzQ0sWelF0IyEFUAW7Ggg1PpZciQwwndr8y9MX5tmbkXbEjF2fn0vg_zNJpLt4NTm3.jpg?size=200x406&quality=96&crop=0,0,286,582&ava=1'},
     ],
     arrMessage : [
-        {message: 'Hi'},
-        {message: 'Bay'},
-        {message: 'Fack you!'},
-        {message: 'ha-ha'},
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'Bay'},
+        {id: 3, message: 'Fack you!'},
+        {id: 4, message: 'ha-ha'},
     ],
     newDialogMessage: ''
 }
@@ -46,7 +47,7 @@ export const dialogReducer = (state: dialogsPageType = initialState, action: Dia
             }
         }
         case ADD_MASSAGE:{
-            let newMessage = {message: state.newDialogMessage}
+            let newMessage = {message: state.newDialogMessage, id:7}
             return{
                 ...state,
                 arrMessage: state.arrMessage.concat(newMessage)

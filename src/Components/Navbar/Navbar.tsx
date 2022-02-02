@@ -6,16 +6,16 @@ import {navbarPagesType} from "../../Redux/navbarReducer";
 
 
 type propsType = {
-    navbarPage:navbarPagesType
+    navbarPage: navbarPagesType
 }
 
 
-export const Navbar:React.FC<propsType> = (props) => {
+export const Navbar: React.FC<propsType> = (props) => {
     return (
         <div className={cl.navbar}>
             {props.navbarPage.navbar.map((el_navBar) => {
                 return (
-                    <div className={cl.item}>
+                    <div key={el_navBar.id} className={cl.item}>
                         <NavLink to={el_navBar.path}
                                  className={({isActive}) => isActive ? cl.active : cl.a}>{el_navBar.title}</NavLink>
                     </div>

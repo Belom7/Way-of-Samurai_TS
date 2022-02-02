@@ -22,7 +22,7 @@ export const Dialogs: React.FC<DialogType> = (props) => {
             <ul>
                 {props.dialogsPage.arrName.map((el) => {
                     return (
-                        <li className={cl.dialog}>
+                        <li key={el.id} className={cl.dialog}>
                             <Dialog name={el.name} id={el.id} img={el.img}/>
                         </li>
                     )
@@ -31,7 +31,7 @@ export const Dialogs: React.FC<DialogType> = (props) => {
             <ul>
                 {props.dialogsPage.arrMessage.map((el_arrMessage) => {
                     return (
-                        <li className={cl.message}>
+                        <li key={el_arrMessage.id} className={cl.message}>
                             <Message message={el_arrMessage.message}/>
                         </li>
                     )
