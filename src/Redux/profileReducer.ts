@@ -28,13 +28,19 @@ let initialState = {
 
 export const profileReducer = (state:profilePageType = initialState, action:ProfileActionsType):profilePageType => {
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST:{
             let newPost: postType = {id: 5, name: 'Kto to iz grota', message: action.text, likeCount: 5}
-            state.arrPosts.push(newPost)
-            return state
-        case CHANGE_NEW_POST_TEXT:
-            state.newPostText = action.text
-            return state
+            return {
+                ...state,
+                arrPosts: state.arrPosts.concat(newPost)
+            }
+        }
+        case CHANGE_NEW_POST_TEXT:{
+            return{
+                ...state,
+                newPostText:action.text
+            }
+        }
         default: return state
     }
 }

@@ -15,5 +15,4 @@ export type appStoreType = typeof store
 export type appStateType = ReturnType<typeof reducers>
 
 
-
 window.store = store

@@ -39,14 +39,19 @@ let initialState = {
 
 export const dialogReducer = (state: dialogsPageType = initialState, action: DialogsActionType):dialogsPageType => {
     switch (action.type) {
-        case CHANGE_NEW_MASSAGE_TEXT:
-            state.newDialogMessage = action.text
-            return state
-        case ADD_MASSAGE:
-            let message = state.newDialogMessage
-            let newMessage = {message: message}
-            state.arrMessage.push(newMessage)
-            return state
+        case CHANGE_NEW_MASSAGE_TEXT:{
+            return{
+                ...state,
+                newDialogMessage:action.text
+            }
+        }
+        case ADD_MASSAGE:{
+            let newMessage = {message: state.newDialogMessage}
+            return{
+                ...state,
+                arrMessage: state.arrMessage.concat(newMessage)
+            }
+        }
         default: return state
     }
 }
