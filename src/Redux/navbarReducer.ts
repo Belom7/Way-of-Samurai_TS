@@ -23,6 +23,7 @@ let initialState = {
         {id:3, path: '/news', title: 'Новости'},
         {id:4, path: '/music', title: 'Музыка'},
         {id:5, path: '/settings', title: 'Настройки'},
+        {id:6, path: '/users', title: 'Пользователи'},
     ],
     friends: [
         {id:1, name: 'Sasha', img: 'https://cspromogame.ru//storage/upload_images/avatars/1299.jpg'},

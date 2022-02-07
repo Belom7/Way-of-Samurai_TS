@@ -5,6 +5,7 @@ import {Profile} from "./Components/Body/Profile/Profile";
 import {Route, Routes} from "react-router-dom";
 import {DialogsContainer} from "./Components/Body/Dialogs/DialogsContainer";
 import {NavbarContainer} from "./Components/Navbar/NavbarContainer";
+import {UsersContainer} from "./Components/Body/Users/UsersContainer";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                 <Routes>
                     <Route path={'/profile'} element={<Profile title={'ava discription'}/>}/>
                     <Route path={'/message'} element={<DialogsContainer/>}/>
+                    <Route path={'/users'} element={<UsersContainer/>}/>
                 </Routes>
             </div>
         </div>
