@@ -1,20 +1,19 @@
 import axios from "axios";
-import {usersPageType} from "../../../Redux/usersReducer";
+import {usersPageType, UsersType} from "../../../Redux/usersReducer";
 import cl from './User.module.css'
 import noAvatar from './../../../assets/images/noAvatar.jpeg'
 
-type UsersType = {
+type PropsType = {
     usersPage: usersPageType
     follow: (userId: number) => void
     unFollow: (userId: number) => void
-    setUsers: (users: any) => void
+    setUsers: (users: UsersType[]) => void
 }
 
-export const Users = (props: UsersType) => {
-
+export const Users = (props: PropsType) => {
     const getUsers = () => {
         if (props.usersPage.users.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            axios.get<{items: UsersType[]}>("https://social-network.samuraijs.com/api/1.0/users").then(response => {
                 props.setUsers(response.data.items)
             })
         }
