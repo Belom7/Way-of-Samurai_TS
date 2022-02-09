@@ -12,13 +12,12 @@ type UsersType = {
 
 export const Users = (props: UsersType) => {
 
-    if (props.usersPage.users.length === 0) {
-
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-
-            props.setUsers(response.data.items)
-        })
-
+    const getUsers = () => {
+        if (props.usersPage.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+                props.setUsers(response.data.items)
+            })
+        }
     }
 
     const unFollowHandler = (userId: number) => {
@@ -30,10 +29,12 @@ export const Users = (props: UsersType) => {
     return (
         <div>
             <h3>Users</h3>
+            <button onClick={getUsers}>getUsers</button>
             {props.usersPage.users.map(m => <div key={m.id}>
                 <span>
                     <div>
-                        <img className={cl.img} alt={'avatarka'} src={m.photos.small != null? m.photos.small : noAvatar}/>
+                        <img className={cl.img} alt={'avatarka'}
+                             src={m.photos.small != null ? m.photos.small : noAvatar}/>
                     </div>
                     <div>
                         {m.followed ? <button onClick={() => unFollowHandler(m.id)}>Follow</button>
