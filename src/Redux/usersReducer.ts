@@ -2,16 +2,16 @@ export type usersPageType = {
     users: UsersType[]
 }
 export type UsersType = {
-    id: number
-    img: string
-    follow: boolean
     name: string
+    id: number
+    uniqueUrlName: string
+    photos: PhotoType
     status: string
-    location: LocationType
+    followed: boolean
 }
-type LocationType = {
-    country: string
-    sity: string
+type PhotoType = {
+    small: string
+    large: string
 }
 
 type ActionType = FollowACType | UnFollowACType | SetUserType
@@ -24,6 +24,7 @@ type SetUserType = ReturnType<typeof setUsersAC>
 let initialState = {
     users: []
 }
+console.log(initialState)
 
 const FOLLOW = 'FOLLOW'
 const UN_FOLLOW = 'UN-FOLLOW'
@@ -44,7 +45,6 @@ export const usersReducer = (state: usersPageType = initialState, action: Action
             }
         }
         case SET_USERS:{
-            debugger
             return{
                 ...state,
                 users: [...state.users, ...action.users]
